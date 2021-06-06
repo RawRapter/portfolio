@@ -11,6 +11,81 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="shortcut icon" type="images/favicon.ico" href="images/favicon.ico" />
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load Charts and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Draw the pie chart for First's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawFirstChart);
+
+      // Draw the pie chart for the Second's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawSecondChart);
+
+      // Callback that draws the pie chart for First's pizza.
+      function drawFirstChart() {
+
+        // Create the data table for First's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Analyze Data', 3],
+          ['Reading', 1],
+          ['Code', 3],
+          ['Watch Series', 1],
+          ['Writing', 2]
+        ]);
+
+        // Set options for First's pie chart.
+        var options = {title:'Skill Managerment',
+                       width: 558,
+                       height:300,
+                       chartArea:{left:20},
+					   pieHole: 0.4,
+                       is3D: false,
+                       /* legend:{position:'none'} */};
+
+        // Instantiate and draw the chart for First's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('First_chart_div'));
+        chart.draw(data, options);
+      }
+
+      // Callback that draws the pie chart for Second's pizza.
+      function drawSecondChart() {
+
+        // Create the data table for Second's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Sleep', 6.5],
+          ['Work', 5],
+          ['Learning', 5],
+          ['Entertainment', 4],
+		  ['Others', 2],
+		  ['Exercise', 1.5],
+        ]);
+
+        // Set options for Second's pie chart.
+        var options = {title:'Daily Routine',
+                       width: 558,
+                       height:300,
+                       chartArea:{left:20},
+                       is3D: true,
+                       /* legend:{position:'none'} */};
+
+        // Instantiate and draw the chart for Second's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Second_chart_div'));
+        chart.draw(data, options);
+      }
+      $(window).resize(function(){
+        drawSecondChart();
+        drawFirstChart();
+
+});
+    </script>
 	</head>
 	<body class="is-preload">
 
@@ -60,7 +135,7 @@
 										it makes sense and is rewarding for everyone <!--<a href="http://html5up.net">HTML5 UP</a>-->.</p>
 									</header>
 									<p>In my 20s with B.Tech Degree in Information Technology. Enhancing skills in Data Analytics with Devops Culture. I'm always looking for new technology to play with and love to fail with projects to learn how it can be done better.<br />
-									Currently doing Masters in Computer Science and teaching students, btw I have 3 years of experience as an Analyst too. </p>
+									Currently doing Masters in Computer Science and teaching students, And I have 3 years of experience as an Analyst too. </p>
 								</div>
 							</section>
 
@@ -80,6 +155,11 @@
 										<li class="icon solid fa-tv">Watch Series</li>
 									</ul>
 								</div>
+								<div class="clearfix visible-xs"></div>
+                                <div class="row">
+                                      <div class="col-sm-1" id="First_chart_div" style="border: 0x solid #ccc"></div>
+                                      <div class="col-sm-1" id="Second_chart_div" style="border: 0px solid #ccc"></div>
+                                    </div>
 							</section>
 
 						<!-- Three -->
